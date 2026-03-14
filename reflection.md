@@ -26,6 +26,7 @@ One helpful suggestion from AI was about the New Game button not resetting the g
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
 I thought the Show Hint button was broken because when I clicked it nothing new appeared. I asked Claude to look at the code and it explained that the hint was not saved in session state and suggested changing the code to store the hint. The explanation sounded correct but after testing the game again I realized the hint was actually the Go Higher or Go Lower message from the guess result. The feature was already working and I had misunderstood how the hint worked. This showed me that AI can give confident explanations even when there is no real bug, so it is important to test things yourself before changing the code.
+
 ---
 
 ## 3. Debugging and testing your fixes
@@ -36,6 +37,7 @@ I thought the Show Hint button was broken because when I clicked it nothing new 
 - Did AI help you design or understand any tests? How?
 
 To decide if a bug was fixed I ran the Streamlit game and tested the behavior again. For the New Game bug I guessed the correct number and then clicked New Game to see if the game reset. After adding the status reset line the game started a new round correctly, so I knew the fix worked. I also tested the high and low logic by entering numbers above and below the secret number to check that the hints said Go Higher or Go Lower correctly. I also ran pytest tests for the check_guess function, which confirmed the function returned the correct result for different guesses. AI helped explain what the test should check and helped generate a simple pytest test, but I still verified the behavior by running the program myself.
+
 ---
 
 ## 4. What did you learn about Streamlit and state?
@@ -43,6 +45,7 @@ To decide if a bug was fixed I ran the Streamlit game and tested the behavior ag
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
 Streamlit reruns the entire script every time a user interacts with the app. Because of this, the program needs session state to remember important values between reruns. Session state is like memory for the app and stores things like the secret number, number of attempts, and game status. Without session state the game would reset every time the page reruns.
+
 ---
 
 ## 5. Looking ahead: your developer habits
