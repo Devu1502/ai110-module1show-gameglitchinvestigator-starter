@@ -134,7 +134,9 @@ with col3:
 if new_game:
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(1, 100)
-    st.success("New game started.")
+    st.session_state.status = "playing"
+    # FIX: Reset status when starting a new game so the "already won" message does not persist.
+    # Identified using Claude analysis and verified by testing the Streamlit rerun behavior.    st.success("New game started.")
     st.rerun()
 
 if st.session_state.status != "playing":
